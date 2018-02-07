@@ -8,5 +8,10 @@
     shell: whoami
 
   - name: Job NTP sync
-    shell: date
+    command: date
+    register: msg_date
     become_user: root
+
+  - debug: msg="{{ msg_date.stdout }}"
+
+  - debug: msg="{{ msg_date.stderr }}"
