@@ -1,0 +1,12 @@
+# ansible -i hosts-live all -m shell -a "date"
+- hosts: all
+  become: yes
+  become_user: www-data
+
+  tasks:
+  - name: Whoami to run the Ansible Playbook
+    shell: whoami
+
+  - name: Job NTP sync
+    shell: date
+    become_user: root
